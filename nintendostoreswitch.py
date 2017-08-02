@@ -13,10 +13,10 @@ driver.get(target_url)
 root = lxml.html.fromstring(driver.page_source)
 
 result = "SOLD OUT"
-i = 0
 
 while result == "SOLD OUT":
-    time.sleep(2)
+    nowtime = datetime.now().strftime("%H:%M:%S") 
+    time.sleep(3)
     result = "エラー"
     i = 0
     while result == "エラー":
@@ -26,7 +26,7 @@ while result == "SOLD OUT":
         result = root.cssselect('title')[0].text
     result = root.cssselect('.stock')[0].text
     if i > 1:
-        print(result + " " + datetime.now().strftime("%Y/%m/%d %H:%M:%S") + " " + str(i))
+        print(result + str(nowtime) + " - " + datetime.now().strftime("%H:%M:%S") + " エラー" + str(i))
     
 print(result + " " + datetime.now().strftime("%Y/%m/%d %H:%M:%S") + " " + str(i))
 webbrowser.open(target_url)
