@@ -9,9 +9,6 @@ from datetime import datetime
 print("start " + datetime.now().strftime("%Y/%m/%d %H:%M:%S"))
 target_url = 'https://store.nintendo.co.jp/customize.html'
 driver = webdriver.PhantomJS()
-driver.get(target_url)
-root = lxml.html.fromstring(driver.page_source)
-
 result = "SOLD OUT"
 
 while result == "SOLD OUT":
